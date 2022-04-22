@@ -1,0 +1,53 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    background-color: #022037;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    font-family: 'Poppins', sans-serif;
+}
+
+.movie-poster {
+    width: 185px;
+    height: 280px;
+}
+
+.outer_ring {
+    width: 40px;
+    height: 40px;
+    padding: 3px;
+    border-radius: 50%;
+    background-color: #081c22;
+}
+
+.description {
+    padding-right: 8px;
+    margin-top: 25px;
+    text-overflow: ellipsis;
+    word-wrap: break-word;
+    white-space: normal;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 6;
+    -webkit-box-orient: vertical;
+}
+
+.movie-title {
+    font-weight: 600;
+    font-size: 0.7em;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.more-info {
+    border-bottom: 1px solid #e3e3e3;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 16px;
+}
