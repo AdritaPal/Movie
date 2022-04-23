@@ -13,6 +13,11 @@ import { HeaderComponent } from './header/header.component';
 import { HomeComponent } from './home/home.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DetailsComponent } from './details/details.component';
+import {RouterModule} from '@angular/router';
+import {MatChipsModule} from '@angular/material/chips';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { FlexLayoutModule } from '@angular/flex-layout';
+
 
 
 
@@ -22,18 +27,22 @@ import { DetailsComponent } from './details/details.component';
     AppComponent,
     HeaderComponent,
     HomeComponent,
-    DetailsComponent
+    DetailsComponent,
   ],
   imports: [
     BrowserModule,
+    MatChipsModule,
     BrowserAnimationsModule,
     AppRoutingModule,
     HttpClientModule,
     MatTabsModule,
+    FlexLayoutModule,
     MatProgressSpinnerModule,
     MatIconModule,
+    RouterModule,
     MatGridListModule,
-    MatCardModule
+    MatCardModule,
+    NgbModule
   ],
   providers: [],
   bootstrap: [AppComponent]

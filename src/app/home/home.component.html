@@ -9,7 +9,7 @@
             <mat-card style="padding: 0; height: 280px" routerLink="/movie-details/{{i.id}}">
                 <mat-grid-list cols="5" rowHeight="280px" class="fade-in">
                     <mat-grid-tile colspan="3">
-                        <img src="{{imageAPI}}{{i.poster_path}}" class="movie-poster" alt="{{i.title}}" />
+                        <img src="{{imageAPI}}{{i.poster_path}}" class="movie-poster" alt="{{i.name}}" />
                     </mat-grid-tile>
                     <mat-grid-tile>
                         <mat-card-content style="top:0; position: absolute; padding: 10px">
@@ -23,7 +23,7 @@
                                     </div>
                                 </div>
                                 <mat-card-title>
-                                    <a mat-button routerLink="/movie-details/{{i.id}}" class="movie-title">{{i.title}}</a>
+                                    <a mat-button routerLink="/movie-details/{{i.id}}" class="movie-title" >{{title(i.original_title, i.title, i.name,i.original_name)}}</a>
                                 </mat-card-title>
                                 <mat-card-subtitle><i>{{i.release_date | date:'mediumDate'}}</i></mat-card-subtitle>
                             </mat-card-header>
@@ -47,7 +47,7 @@
             <mat-card style="padding: 0; height: 280px" routerLink="/movie-details/{{i.id}}">
                 <mat-grid-list cols="5" rowHeight="280px" class="fade-in">
                     <mat-grid-tile colspan="3">
-                        <img src="{{imageAPI}}{{i.poster_path}}" class="movie-poster" alt="{{i.title}}" />
+                        <img src="{{imageAPI}}{{i.poster_path}}" class="movie-poster" alt="{{i.name}}" />
                     </mat-grid-tile>
                     <mat-grid-tile>
                         <mat-card-content style="top:0; position: absolute; padding: 10px">
@@ -61,7 +61,7 @@
                                     </div>
                                 </div>
                                 <mat-card-title>
-                                    <a mat-button routerLink="/movie-details/{{i.id}}" class="movie-title">{{i.title}}</a>
+                                    <a mat-button routerLink="/movie-details/{{i.id}}" class="movie-title">{{title(i.original_title, i.title, i.name, i.original_name)}}</a>
                                 </mat-card-title>
                                 <mat-card-subtitle><i>{{i.release_date | date:'mediumDate'}}</i></mat-card-subtitle>
                             </mat-card-header>

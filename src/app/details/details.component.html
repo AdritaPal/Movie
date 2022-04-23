@@ -1,1 +1,132 @@
-<p>details works!</p>
+<section role="main">
+    <div class="details-bg" *ngIf="MovieDetails.poster_path"
+      [style.backgroundImage]="'url(https://image.tmdb.org/t/p/w500'+MovieDetails.backdrop_path+')'"
+      [style.backgroundColor]="color">
+      
+      <div class="custom_bg">
+        <div class="details-container">
+          <div style="padding: 0;background: transparent;">
+            <mat-grid-list cols="6" rowHeight="600px" gutterSize="0">
+              <mat-grid-tile colspan="2" gutterSize="0">
+                <img src="{{imageAPI}}{{MovieDetails.poster_path}}" class="details-poster"
+                  alt="{{MovieDetails.title}}" />
+              </mat-grid-tile>
+              <mat-grid-tile colspan="4">
+                <mat-card-content class="details-info">
+                  <mat-card-title>
+                    <h2 class="movie-title">{{MovieDetails.original_title}}
+                      <span class="release-date">({{MovieDetails.release_date|date}})</span>
+                    </h2>
+                  </mat-card-title>
+                  <mat-card-title>
+                    <ul class="movie-actions">
+                      <li class="chart">
+                        <div mat-card-avatar class="outer_ring">
+                          
+                          <mat-progress-spinner diameter="60"
+                            mode="determinate"
+                            [value]="MovieDetails.vote_average*10">
+                          </mat-progress-spinner>
+                          <div class="circle-content">
+                            <small>{{ MovieDetails.vote_average * 10 }}<sup>%</sup></small>
+                          </div>
+                        </div>
+                        <div class="text">User<br />Score</div>
+                      </li>
+                      <!--<li>
+                        <a class="icon-outline">
+                          <mat-icon aria-hidden="false" aria-label="Wish list">list</mat-icon>
+                        </a>
+                      </li>-->
+  
+                      <!--<li>
+                        <a class="icon-outline">
+                          <mat-icon aria-hidden="false" aria-label="Make Favorite">favorite</mat-icon>
+                        </a>
+                      </li>-->
+  
+                      <!--<li>
+                        <a class="icon-outline">
+                          <mat-icon aria-hidden="false" aria-label="Bookmark">bookmark</mat-icon>
+                        </a>
+                      </li>-->
+  
+                      <!--<li>
+                        <a class="icon-outline">
+                          <mat-icon aria-hidden="false" aria-label="Star">star</mat-icon>
+                        </a>
+                      </li>-->
+                     
+                    </ul>
+                  </mat-card-title>
+
+                  <div class="tag">
+                    <p>
+                        <i>{{MovieDetails.tagline}}</i>
+                    </p>
+                  </div>
+
+                  <h3>Overview</h3>
+                  <div class="overview">
+                    <p>
+                      {{MovieDetails.overview}}
+                    </p>
+                  </div>
+                  <h3 class="featured" dir="auto">Featured Crew</h3>
+                  <ol class="people">
+                    <li class="profile">
+                      <p class="character" *ngFor="let name of credits.crew">{{director(name.job, name.name)}}</p>
+                      <p>Director</p>
+                    </li>
+                    <li class="profile">
+                      <p class="character" *ngFor="let name of credits.crew">{{writer(name.job, name.name)}}</p>
+                      <p>Writer</p>
+                    </li>
+                    <li class="profile">
+                      <p class="character">{{MovieDetails.original_language}}</p>
+                      <p>Original Language</p>
+                    </li>
+                    <li class="profile">
+                      <p class="character">{{MovieDetails.runtime * 1000 * 60| date:'HH:mm':'UTC'}} mins</p>
+                      <p>Runtime</p>
+                    </li>
+                    <li class="profile">
+                      <p class="character">{{MovieDetails.budget | currency}}</p>
+                      <p>Budget</p>
+                    </li>
+                    <li class="profile">
+                      <p class="character">{{MovieDetails.revenue | currency}}</p>
+                      <p>Revenue</p>
+                    </li>
+                  </ol>
+                  <div class="genres">
+                    <h3>Genres</h3>
+                    <mat-chip-list aria-label="Genres selection">
+                      <mat-chip [style.backgroundColor]="'grey'" [style.color]="'white'"
+                        *ngFor="let genre of MovieDetails.genres">{{genre.name}}</mat-chip>
+                    </mat-chip-list>
+                  </div>
+                </mat-card-content>
+              </mat-grid-tile>
+            </mat-grid-list>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="content"  >
+      <div fxLayout="row wrap" fxLayoutGap="16px grid">
+        <div [fxFlex]="(100/gridColumns) + '%'" fxFlex.xs="50%" fxFlex.sm="33%" *ngFor="let name of credits.cast">
+          <mat-card class="mat-elevation-z4">
+            
+            <img mat-card-image src="{{imageAPI}}{{name.profile_path}}" onerror="this.src='https://cdn.pixabay.com/photo/2018/11/13/21/43/avatar-3814049_960_720.png';">
+            <mat-card-header>
+              <mat-card-title>{{name.name}}</mat-card-title>
+              <mat-card-subtitle>{{name.character}}</mat-card-subtitle>
+
+            </mat-card-header>
+            
+          </mat-card>
+        </div>
+      </div>
+    </div>
+  </section>

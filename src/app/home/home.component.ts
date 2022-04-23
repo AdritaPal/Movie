@@ -33,6 +33,21 @@ export class HomeComponent implements OnInit {
       this.Day = data;
     });
   }
+
+  title(original_title: string, title: string, name: string, original_name: string): string{
+    if(original_title){
+      return original_title;
+    }
+    else if(title){
+      return title;
+    }
+    else if(name){
+      return name;
+    }
+    else{
+      return original_name;
+    }
+  }
 }
 
   

@@ -5,6 +5,8 @@ import { HttpClient } from '@angular/common/http';
 import {Details} from './details';
 import {api} from './config';
 import {list} from './list';
+import {Credits} from "./credits";
+import { Router } from '@angular/router';
 
 
 @Injectable({
@@ -12,7 +14,10 @@ import {list} from './list';
 })
 export class RestApiService {
 
-  constructor(private http: HttpClient) { }
+  constructor(
+    private http: HttpClient,
+    private route: Router
+    ) { }
 
   url=api.apiUrl;
   key=api.apiKey;
@@ -33,6 +38,26 @@ export class RestApiService {
       );
   }
 
+  getMovieDetails(id: number): Observable<Details> {
+    return this.http.get<Details>(`${this.url}movie/${id}?api_key=${this.key}`)
+      .pipe(
+        retry(1),
+        catchError(this.handleError)
+      );
+  }
+  
+
+  getCredits(id: number): Observable<Credits> {
+    return this.http.get<Credits>(`${this.url}movie/${id}/credits?api_key=${this.key}`)
+      .pipe(
+        retry(1),
+        catchError(this.handleError)
+      );
+  }
+  
+  
+
+
   handleError(error: any) {
     let errorMessage = '';
     if (error.error instanceof ErrorEvent) {
@@ -45,4 +70,6 @@ export class RestApiService {
     window.alert(errorMessage);
     return throwError(errorMessage);
   }
+
+ 
 }

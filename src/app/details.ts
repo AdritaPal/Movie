@@ -24,6 +24,9 @@ export class Details {
     'video': boolean;
     'vote_average': number;
     'vote_count': number;
+    'name': string;
+    'original_name': string;
+
   
     constructor(values: object = {}) {
       Object.assign(this, values);
