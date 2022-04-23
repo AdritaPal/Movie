@@ -116,7 +116,7 @@
     <div class="content"  >
       <div fxLayout="row wrap" fxLayoutGap="16px grid">
         <div [fxFlex]="(100/gridColumns) + '%'" fxFlex.xs="50%" fxFlex.sm="33%" *ngFor="let name of credits.cast">
-          <mat-card class="mat-elevation-z4">
+          <mat-card class="mat-elevation-z4" *ngIf="name.order <14">
             
             <img mat-card-image src="{{imageAPI}}{{name.profile_path}}" onerror="this.src='../assets/placeholder.png';">
             <mat-card-header>
