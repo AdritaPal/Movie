@@ -1,0 +1,17 @@
+<h1>Full Cast & Crew</h1>
+
+<div class="row">
+  <div class="column" >
+    <h4><u>Cast</u></h4><br>
+    <div *ngFor="let cast of credits.cast">
+        <p><b>{{cast.name}}</b> - {{cast.character}}</p>
+    </div>
+  </div>
+  <div class="column" >
+    <h4 ><u>Crew</u></h4> <br>
+    <div *ngFor="let crew of credits.crew">
+        <p><b>{{crew.job}}</b> - {{crew.name}}</p>
+    </div>
+
+  </div>
+</div>

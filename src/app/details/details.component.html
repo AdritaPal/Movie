@@ -87,7 +87,7 @@
                       <p>Original Language</p>
                     </li>
                     <li class="profile">
-                      <p class="character">{{MovieDetails.runtime * 1000 * 60| date:'HH:mm':'UTC'}} mins</p>
+                      <p class="character">{{runtime(MovieDetails.runtime)}} </p>
                       <p>Runtime</p>
                     </li>
                     <li class="profile">
@@ -129,4 +129,9 @@
         </div>
       </div>
     </div>
+    <div class="more-info">
+      <a mat-button routerLink="/credits/{{MovieDetails.id}}" >Full Cast & Crew</a>
+  </div>
+
+
   </section>

@@ -17,6 +17,7 @@ import {RouterModule} from '@angular/router';
 import {MatChipsModule} from '@angular/material/chips';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { CreditsComponent } from './credits/credits.component';
 
 
 
@@ -28,6 +29,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     HeaderComponent,
     HomeComponent,
     DetailsComponent,
+    CreditsComponent,
   ],
   imports: [
     BrowserModule,

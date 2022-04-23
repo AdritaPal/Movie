@@ -56,6 +56,15 @@ export class DetailsComponent implements OnInit {
   }
   gridColumns = 7;
   color1 = 'grey'
-  
+  'hour' : number;
+  'minutes': number;
+  runtime(runtime: number): string{
+    this.hour = Math.floor(runtime / 60); 
+    this.minutes = runtime - (this.hour * 60);
+    return this.hour+'h'+' '+this.minutes+'m'; 
+  }
+
+
+
  
 }
