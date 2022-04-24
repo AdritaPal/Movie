@@ -21,7 +21,6 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
     this.restApi.getTrendingMoviesWeek()
     .subscribe((data: {}) => {
-      this.apiResponse = data;
       console.warn(data);
       this.Week = data;
     });

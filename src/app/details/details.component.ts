@@ -13,6 +13,7 @@ export class DetailsComponent implements OnInit {
   movieId = this.router.snapshot.params['movie-id']
   MovieDetails: any = {};
   credits: any= {};
+  reviews: any= {};
   imageAPI = api.imageAPI;
   l: any = {};
 
@@ -33,7 +34,11 @@ export class DetailsComponent implements OnInit {
       this.credits = data;
     })
 
-
+    this.restApi.getReviews(this.movieId)
+    .subscribe((data: {}) => {
+      this.reviews = data;
+      console.log(this.reviews);
+    })
 
   }
 

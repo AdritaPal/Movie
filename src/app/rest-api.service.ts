@@ -55,7 +55,13 @@ export class RestApiService {
       );
   }
   
-  
+  getReviews(id: number): Observable<list> {
+    return this.http.get<list>(`${this.url}movie/${id}/reviews?api_key=${this.key}`)
+      .pipe(
+        retry(1),
+        catchError(this.handleError)
+      );
+  }
 
 
   handleError(error: any) {
@@ -70,6 +76,8 @@ export class RestApiService {
     window.alert(errorMessage);
     return throwError(errorMessage);
   }
+
+
 
  
 }

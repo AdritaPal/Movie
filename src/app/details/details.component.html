@@ -118,7 +118,7 @@
         <div [fxFlex]="(100/gridColumns) + '%'" fxFlex.xs="50%" fxFlex.sm="33%" *ngFor="let name of credits.cast">
           <mat-card class="mat-elevation-z4" *ngIf="name.order <14">
             
-            <img mat-card-image src="{{imageAPI}}{{name.profile_path}}" onerror="this.src='../assets/placeholder.png';">
+            <img mat-card-image src="{{imageAPI}}{{name.profile_path}}" onError="this.src='../assets/placeholder.png';">
             <mat-card-header>
               <mat-card-title>{{name.name}}</mat-card-title>
               <mat-card-subtitle>{{name.character}}</mat-card-subtitle>
@@ -129,9 +129,27 @@
         </div>
       </div>
     </div>
-    <div class="more-info">
-      <a mat-button routerLink="/credits/{{MovieDetails.id}}" >Full Cast & Crew</a>
-  </div>
+    <br><br>
+    
 
+        <a  routerLink="/credits/{{MovieDetails.id}}" >Full Cast & Crew</a><br><br>
+
+        <h4>Reviews ({{reviews.total_results}})</h4>
+        <div  *ngFor="let rev of reviews.results">
+          <mat-card class="reviews">
+            <mat-card-title>{{rev.author}}</mat-card-title>
+            <mat-card-subtitle>{{rev.updated_at | date: "medium"}}</mat-card-subtitle>
+            <mat-card-content>
+              <p>{{rev.content}}</p>
+            </mat-card-content>
+            
+          </mat-card>
+        </div>
+    
+
+    
+  <!--<div  *ngFor="let rev of reviews.results">
+    {{rev.content}}
+  </div>-->
 
   </section>

@@ -18,9 +18,7 @@ import {MatChipsModule} from '@angular/material/chips';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { CreditsComponent } from './credits/credits.component';
-
-
-
+import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 
 
 @NgModule({
@@ -33,6 +31,7 @@ import { CreditsComponent } from './credits/credits.component';
   ],
   imports: [
     BrowserModule,
+    InfiniteScrollModule,
     MatChipsModule,
     BrowserAnimationsModule,
     AppRoutingModule,
@@ -44,7 +43,8 @@ import { CreditsComponent } from './credits/credits.component';
     RouterModule,
     MatGridListModule,
     MatCardModule,
-    NgbModule
+    NgbModule,
+
   ],
   providers: [],
   bootstrap: [AppComponent]
