@@ -1,0 +1,41 @@
+<body>
+<div class="container" id="Main">
+    <form>
+        <h1>MOVIE DB APP</h1>
+        <h2>REGISETR USER</h2>
+            <form (ngSubmit)="userRegister()">
+              <div class="mb-3">
+                <label for="fname" class="form-label" style="color: white; font-weight: bolder;">First Name</label>
+                <input type="text" class="form-control" id="fname" name="fname" [(ngModel)]="user.fname">
+              </div>
+              <div class="mb-3">
+                <label for="lname" class="form-label" style="color: white; font-weight: bolder;">Last Name</label>
+                <input type="text" class="form-control" id="lname" name="lname" [(ngModel)]="user.lname">
+              </div>  
+              <div class="mb-3">
+                    <label for="userId" class="form-label" style="color: white; font-weight: bolder;">User Id</label>
+                    <input type="text" class="form-control" id="userId" name="userId" [(ngModel)]="user.userId">
+                  </div>
+                <div class="mb-3">
+                    <label for="email" class="form-label" style="color: white; font-weight: bolder;">Email id</label>
+                    <input type="email" class="form-control" id="email" name="email" [(ngModel)]="user.email">
+                  </div>  
+                <div class="mb-3">
+                    <label for="password" class="form-label" style="color: white; font-weight: bolder;">Password</label>
+                    <input type="password" class="form-control" id="password" name="password" [(ngModel)]="user.password">
+                  </div>
+                  <div class="mb-3">
+                    <label for="cpassword" class="form-label" style="color: white; font-weight: bolder;">Confirm Password</label>
+                    <input type="password" class="form-control" id="cpassword" name="cpassword" [(ngModel)]="user.cpassword">
+                  </div>
+                 
+                <button type="submit" class="btn btn-primary" id="submit" style="background-color: black;color: rgb(102, 255, 0);">Register</button>
+            </form>
+            <div style="color: white;">
+              Go back to <a style="color: rgb(102, 255, 0);" routerLink="/login">login</a> page 
+            </div>
+            
+       
+    </form>
+</div>
+</body>
