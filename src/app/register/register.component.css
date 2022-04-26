@@ -1,0 +1,22 @@
+#Main{
+    display:table;
+    width: 400px;
+    height: 730px;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+body{
+    background-image: linear-gradient(rgb(33, 25, 77), rgb(145, 33, 179));
+    
+    
+}
+    
+#Main h1{
+    color: rgb(102, 255, 0);
+    font-weight: bolder;
+    text-align: center;
+}
+#Main h2{
+    color: rgb(102, 255, 0);
+    font-weight: bolder;
+    text-align: center;
+}
