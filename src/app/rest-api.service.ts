@@ -22,6 +22,13 @@ export class RestApiService {
   url=api.apiUrl;
   key=api.apiKey;
 
+  getSearchedMovies(query: string): Observable<list> {
+    return this.http.get<list>(`${this.url}search/movie?api_key=${this.key}&query=`+query)
+      .pipe(
+        retry(1),
+        catchError(this.handleError)
+      );
+  }
   getTrendingMoviesWeek(): Observable<list> {
     return this.http.get<list>(`${this.url}trending/all/week?api_key=${this.key}`)
       .pipe(

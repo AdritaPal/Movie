@@ -10,7 +10,7 @@ import {api} from '../config'
   styleUrls: ['./details.component.css']
 })
 export class DetailsComponent implements OnInit {
-  movieId = this.router.snapshot.params['movie-id']
+  movieId = this.router.snapshot.params['movie-id'];
   MovieDetails: any = {};
   credits: any= {};
   reviews: any= {};

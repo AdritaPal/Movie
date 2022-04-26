@@ -6,6 +6,7 @@ import { CreditsComponent } from './credits/credits.component';
 import {AppComponent} from './app.component'
 import { LoginComponent } from './login';
 import { RegisterComponent } from './register/register.component';
+import { SearchComponent } from './search/search.component';
 
 
 const routes: Routes = [
@@ -15,6 +16,8 @@ const routes: Routes = [
   { path: 'home', component:  HomeComponent},
   { path: 'movie-details/:movie-id', component: DetailsComponent },
   { path: 'credits/:movie-id', component: CreditsComponent },
+  { path: 'search/:query', component: SearchComponent },
+
 ];
 
 @NgModule({

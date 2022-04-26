@@ -1,0 +1,38 @@
+<h1>Search Results</h1>
+
+        <div class="container" *ngFor="let i of searchResults.results">
+
+  
+            <mat-card style="padding: 0; height: 280px" routerLink="/movie-details/{{i.id}}" >
+                <mat-grid-list cols="5" rowHeight="280px" class="fade-in">
+                    <mat-grid-tile colspan="3">
+                        <img src="{{imageAPI}}{{i.poster_path}}" class="movie-poster" alt="{{i.name}}" style="cursor:pointer"/>
+                    </mat-grid-tile>
+                    <mat-grid-tile>
+                        <mat-card-content style="top:0; position: absolute; padding: 10px">
+                            <mat-card-header>
+                                <div mat-card-avatar class="outer_ring">
+                                    <mat-progress-spinner diameter="40" mode="determinate" [value]="i.vote_average*10">
+                                    </mat-progress-spinner>
+
+                                    <div class="circle-content" style="width: 40px;height:65px;">
+                                        <small>{{ i.vote_average * 10 }}%</small>
+                                    </div>
+                                </div>
+                                <mat-card-title>
+                                    <a mat-button routerLink="/movie-details/{{i.id}}" class="movie-title" >{{title(i.original_title, i.title, i.name,i.original_name)}}</a>
+                                </mat-card-title>
+                                <mat-card-subtitle><i>{{i.release_date | date:'mediumDate'}}</i></mat-card-subtitle>
+                            </mat-card-header>
+                            <div class="description">
+                                {{i.overview}}
+                            </div>
+                        </mat-card-content>
+                        
+                        <div class="more-info">
+                            <a mat-button routerLink="/movie-details/{{i.id}}">More info</a>
+                        </div>
+                    </mat-grid-tile>
+                </mat-grid-list>
+            </mat-card><br>
+        </div>

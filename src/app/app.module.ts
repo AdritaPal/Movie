@@ -22,7 +22,9 @@ import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 import { FormsModule } from '@angular/forms';
 import { LoginComponent } from './login';
 import { RegisterComponent } from './register';
-
+import { SearchComponent } from './search/search.component';
+import { MatFormFieldModule } from '@angular/material/form-field'
+import { MatInputModule } from '@angular/material/input';
 
 
 @NgModule({
@@ -33,7 +35,8 @@ import { RegisterComponent } from './register';
     DetailsComponent,
     CreditsComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    SearchComponent
   ],
   imports: [
     BrowserModule,
@@ -43,6 +46,8 @@ import { RegisterComponent } from './register';
     AppRoutingModule,
     HttpClientModule,
     MatTabsModule,
+    MatInputModule,
+    MatFormFieldModule,
     FlexLayoutModule,
     MatProgressSpinnerModule,
     MatIconModule,

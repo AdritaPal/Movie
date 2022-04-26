@@ -138,7 +138,7 @@
         <div  *ngFor="let rev of reviews.results">
           <mat-card class="reviews">
             <mat-card-title>{{rev.author}}</mat-card-title>
-            <mat-card-subtitle>{{rev.updated_at | date: "medium"}}</mat-card-subtitle>
+            <mat-card-subtitle>{{rev.updated_at | date: "longDate"}}</mat-card-subtitle>
             <mat-card-content>
               <p>{{rev.content}}</p>
             </mat-card-content>
