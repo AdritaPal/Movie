@@ -1,1 +1,25 @@
+<body>
+    <div class="container" id="Main">
+      <h1>MOVIE DB APP</h1>
+      <h2>LOGIN USER</h2>
+        <form (ngSubmit)="userLogin()">
+            <div class="mb-3">
+                <label for="exampleFormControlInput1" class="form-label" style="color: white; font-weight: bolder;">User Id</label>
+                <input type="text" [(ngModel)]="user.userId" class="form-control" id="userId" name="userId">
+              </div>
+            <div class="mb-3">
+                <label for="exampleFormControlInput1" class="form-label" style="color: white; font-weight: bolder;">Password</label>
+                <input type="password" [(ngModel)]="user.password" class="form-control" id="password" name="password">
+              </div>
+            <button type="submit" class="btn btn-primary" id="submit" style="background-color: rgb(0, 0, 0); color: rgb(102, 255, 0);">Login</button>
+            
+        </form>
+        <div id="link">
+          Don't have an account ?click here to
+          <a style="color: rgb(102, 255, 0);" routerLink="/register">Register</a>
+        </div>
+    </div>
+    
+</body>
+
 
