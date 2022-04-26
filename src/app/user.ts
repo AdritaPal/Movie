@@ -5,5 +5,5 @@ export class User {
     lname!:string;
     email!:string;
     cpassword!:string;
-    pimage!:ImageData;
+    
 }
