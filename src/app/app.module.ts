@@ -17,8 +17,10 @@ import {RouterModule} from '@angular/router';
 import {MatChipsModule} from '@angular/material/chips';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FlexLayoutModule } from '@angular/flex-layout';
-
-
+import { SearchComponent } from './search/search.component';
+import { MatFormFieldModule } from '@angular/material/form-field'
+import { FormsModule } from '@angular/forms';
+import { MatInputModule } from '@angular/material/input';
 
 
 
@@ -28,6 +30,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     HeaderComponent,
     HomeComponent,
     DetailsComponent,
+    SearchComponent,
   ],
   imports: [
     BrowserModule,
@@ -42,7 +45,10 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     RouterModule,
     MatGridListModule,
     MatCardModule,
-    NgbModule
+    NgbModule,
+    MatFormFieldModule,
+    FormsModule,
+    MatInputModule
   ],
   providers: [],
   bootstrap: [AppComponent]
