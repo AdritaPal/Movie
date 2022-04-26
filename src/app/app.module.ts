@@ -19,6 +19,10 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { CreditsComponent } from './credits/credits.component';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
+import { FormsModule } from '@angular/forms';
+import { LoginComponent } from './login';
+import { RegisterComponent } from './register';
+
 
 
 @NgModule({
@@ -28,6 +32,8 @@ import { InfiniteScrollModule } from 'ngx-infinite-scroll';
     HomeComponent,
     DetailsComponent,
     CreditsComponent,
+    LoginComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
@@ -44,6 +50,7 @@ import { InfiniteScrollModule } from 'ngx-infinite-scroll';
     MatGridListModule,
     MatCardModule,
     NgbModule,
+    FormsModule
 
   ],
   providers: [],
