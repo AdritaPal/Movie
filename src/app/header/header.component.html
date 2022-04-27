@@ -59,19 +59,65 @@
             <mat-expansion-panel hideToggle>
               <mat-expansion-panel-header>
                 <mat-panel-title  class="listItems">
-                  Genre
+                  Filters
                 </mat-panel-title>
                 
               </mat-expansion-panel-header >
-              <mat-chip-list>
-                <mat-chip [style.backgroundColor]="'aliceblue'" [style.color]="'black'"  *ngFor="let i of genre.genres">
-                   {{i.name}}
+              <mat-accordion>
+                <mat-expansion-panel hideToggle>
+                  <mat-expansion-panel-header>
+                    <mat-panel-title  class="listItems">
+                      Genre
+                    </mat-panel-title>
                     
-                  </mat-chip>
-              </mat-chip-list>
+                  </mat-expansion-panel-header >
+                  <mat-chip-list>
+                    <mat-chip [style.backgroundColor]="'aliceblue'" [style.color]="'black'"  *ngFor="let i of genre.genres">
+                       {{i.name}}
+                        
+                      </mat-chip>
+                  </mat-chip-list>
+                </mat-expansion-panel><br>
+            </mat-accordion>
             </mat-expansion-panel><br>
         </mat-accordion>
             <mat-divider></mat-divider>
+            <mat-accordion>
+              <mat-expansion-panel hideToggle>
+                <mat-expansion-panel-header>
+                  <mat-panel-title  class="listItems">
+                    Sorting
+                  </mat-panel-title>
+                  
+                </mat-expansion-panel-header >
+                <mat-accordion>
+                  <mat-expansion-panel hideToggle>
+                    <mat-expansion-panel-header>
+                      <mat-panel-title  class="listItems">
+                        Sort Results By
+                      </mat-panel-title>
+                      
+                    </mat-expansion-panel-header >
+                    <mat-nav-list>
+                      <a mat-list-item class="listItems" href="#">Title (A - Z)</a>
+                      <mat-divider></mat-divider>
+                      <a mat-list-item class="listItems" href="#">Title (Z - A)</a>
+                      <mat-divider></mat-divider>
+                      <a mat-list-item class="listItems" href="#">Release Date Descending</a>
+                      <mat-divider></mat-divider>
+                      <a mat-list-item class="listItems" href="#">Release Date Ascending</a>
+                      <mat-divider></mat-divider>
+                      <a mat-list-item class="listItems" href="#">Critic Rating Descending</a>
+                      <mat-divider></mat-divider>
+                      <a mat-list-item class="listItems" href="#">Critic Rating Ascending</a>
+                      <mat-divider></mat-divider>
+
+                    </mat-nav-list>
+                  </mat-expansion-panel><br>
+              </mat-accordion>
+              </mat-expansion-panel><br>
+          </mat-accordion>
+              <mat-divider></mat-divider>
             <mat-accordion>
                 <mat-expansion-panel hideToggle>
                   <mat-expansion-panel-header>
