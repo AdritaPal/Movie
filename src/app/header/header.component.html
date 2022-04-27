@@ -1,5 +1,5 @@
-<div class="toolbar">
-    <a class="home-icon icon-outline" mat-button routerLink="/">
+<!--<div class="toolbar">
+    <a class="home-icon icon-outline" mat-button routerLink="/home">
         <mat-icon aria-hidden="false" aria-label="home icon">movie</mat-icon>
     </a>
     <a class="home" routerLink="/">Movie Database</a>
@@ -41,6 +41,61 @@
         </button>
         </mat-form-field>
         <br/>
-        <!-- {{searchWord}} -->
+        <!-- {{searchWord}} 
         </form>
-</div>
+</div>-->
+
+<mat-sidenav-container fullscreen>
+    <mat-sidenav mode="side" #sidenav >
+      <h3>Menu</h3>
+      <mat-nav-list >
+          
+          <a mat-list-item class="listItems" routerLink="/home">Home</a>
+          <mat-divider></mat-divider>
+          <mat-accordion>
+            <mat-expansion-panel hideToggle>
+              <mat-expansion-panel-header>
+                <mat-panel-title  class="listItems">
+                  Genre
+                </mat-panel-title>
+                
+              </mat-expansion-panel-header >
+              <mat-chip-list>
+                <mat-chip [style.backgroundColor]="'aliceblue'" [style.color]="'black'"  *ngFor="let i of genre.genres">
+                   {{i.name}}
+                    
+                  </mat-chip>
+              </mat-chip-list>
+            </mat-expansion-panel><br>
+            <h5>Anything</h5>
+            <mat-divider></mat-divider>
+            <h5>Anything</h5>
+            <mat-divider></mat-divider>
+            <h5>Anything</h5>
+            <mat-divider></mat-divider>
+
+          </mat-accordion>
+          <mat-divider></mat-divider>
+
+      </mat-nav-list>
+      
+    </mat-sidenav>
+    <mat-sidenav-content>
+      <mat-toolbar color="primary">
+        <button mat-icon-button (click)="sidenav.toggle()">
+          <mat-icon>menu</mat-icon>
+        </button>
+        <a class="home" routerLink="/home" style="color: lightblue;">Movie Database</a>
+        <span class="toolbar-spacer"></span>
+        <input  #box (keyup.enter)="onEnter(box.value)" placeholder="Search for a movie">
+        <button matSuffix mat-button (click)="onEnter(box.value)" style="background-color: lightcyan; color: black;">
+            <mat-icon aria-hidden="false" aria-label="home icon">search</mat-icon>
+        </button>
+      </mat-toolbar>
+ 
+      <router-outlet></router-outlet>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+  
+  
+  

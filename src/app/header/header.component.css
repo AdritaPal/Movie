@@ -78,3 +78,27 @@ header {
 body {
     margin-top: 0px;
 }
+
+.mat-sidenav {
+    width: 280px;
+    padding:15px;
+}
+.mat-drawer { 
+    background-color: #023075;
+    color:#fff
+}
+.main-content {
+    padding:20px;
+}
+.toolbar-spacer {
+    flex: 1 1 auto;
+}
+.listItems{
+    color: aliceblue;
+}
+.mat-form-field + .mat-form-field {
+    margin-left: 8px;
+  }
+  .mat-expansion-panel{
+    background-color: #023075;
+  }

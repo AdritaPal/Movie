@@ -7,6 +7,7 @@ import {api} from './config';
 import {list} from './list';
 import {Credits} from "./credits";
 import { Router } from '@angular/router';
+import { Genre } from './genre';
 
 
 @Injectable({
@@ -56,6 +57,13 @@ export class RestApiService {
 
   getCredits(id: number): Observable<Credits> {
     return this.http.get<Credits>(`${this.url}movie/${id}/credits?api_key=${this.key}`)
+      .pipe(
+        retry(1),
+        catchError(this.handleError)
+      );
+  }
+  getGenres(): Observable<Genre> {
+    return this.http.get<Genre>(`${this.url}genre/movie/list?api_key=${this.key}`)
       .pipe(
         retry(1),
         catchError(this.handleError)
