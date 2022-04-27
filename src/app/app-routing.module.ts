@@ -20,7 +20,7 @@ const routes: Routes = [
   { path: 'credits/:movie-id', component: CreditsComponent },
   { path:'popular',component:PopularComponent },
   { path:'top-rated',component:TopRatedComponent },
-  { path:'search',component:SearchComponent }
+  { path:'search/:query',component:SearchComponent }
 ];
 
 @NgModule({

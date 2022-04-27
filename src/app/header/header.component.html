@@ -107,7 +107,7 @@
         <a class="home" routerLink="/home" style="color: lightblue;">Movie Database</a>
         <span class="toolbar-spacer"></span>
         <input  #box (keyup.enter)="onEnter(box.value)" placeholder="Search for a movie">
-        <button matSuffix mat-button (click)="onEnter(box.value)" style="background-color: lightcyan; color: black;">
+        <button matSuffix mat-button (enter)="onEnter(box.value)" style="background-color: lightcyan; color: black;">
             <mat-icon aria-hidden="false" aria-label="home icon">search</mat-icon>
         </button>
       </mat-toolbar>
