@@ -25,6 +25,14 @@ import { RegisterComponent } from './register';
 import { SearchComponent } from './search/search.component';
 import { MatFormFieldModule } from '@angular/material/form-field'
 import { MatInputModule } from '@angular/material/input';
+import { TopRatedComponent } from './top-rated/top-rated.component';
+import { PopularComponent } from './popular/popular.component';
+import {MatToolbarModule} from '@angular/material/toolbar';
+import {MatSidenavModule} from '@angular/material/sidenav';
+import {MatListModule} from '@angular/material/list';
+import {MatButtonModule} from '@angular/material/button';
+import {MatExpansionModule} from '@angular/material/expansion';
+
 
 
 @NgModule({
@@ -36,16 +44,24 @@ import { MatInputModule } from '@angular/material/input';
     CreditsComponent,
     LoginComponent,
     RegisterComponent,
-    SearchComponent
+    SearchComponent,
+    TopRatedComponent,
+    PopularComponent
   ],
   imports: [
     BrowserModule,
+    MatToolbarModule,
+    MatTabsModule,
+    MatButtonModule,
     InfiniteScrollModule,
+    MatSidenavModule,
+    MatListModule,
     MatChipsModule,
     BrowserAnimationsModule,
     AppRoutingModule,
     HttpClientModule,
     MatTabsModule,
+    MatExpansionModule,
     MatInputModule,
     MatFormFieldModule,
     FlexLayoutModule,

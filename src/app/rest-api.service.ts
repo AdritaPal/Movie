@@ -7,6 +7,7 @@ import {api} from './config';
 import {list} from './list';
 import {Credits} from "./credits";
 import { Router } from '@angular/router';
+import { Genre } from './genre';
 
 
 @Injectable({
@@ -25,7 +26,14 @@ export class RestApiService {
   page2 = 2;
   page3 = 3;
   
-  
+  getGenres(): Observable<Genre> {
+    return this.http.get<Genre>(`${this.url}genre/movie/list?api_key=${this.key}`)
+      .pipe(
+        retry(1),
+        catchError(this.handleError)
+      );
+  }
+
 
   getSearchedMovies(query: string): Observable<list> {
     return this.http.get<list>(`${this.url}search/movie?api_key=${this.key}&query=`+query)
