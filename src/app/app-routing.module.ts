@@ -3,7 +3,6 @@ import { RouterModule, Routes } from '@angular/router';
 import {HomeComponent} from './home/home.component';
 import {DetailsComponent} from './details/details.component';
 import { CreditsComponent } from './credits/credits.component';
-import {AppComponent} from './app.component'
 import { LoginComponent } from './login';
 import { RegisterComponent } from './register/register.component';
 import { PopularComponent } from './popular/popular.component';
@@ -12,7 +11,7 @@ import { SearchComponent } from './search/search.component';
 
 
 const routes: Routes = [
-  { path: '', pathMatch: 'full', redirectTo: '/login' },
+  { path: '', pathMatch: 'full', redirectTo: 'login' },
   {path:'login', component:LoginComponent},
   {path:'register', component:RegisterComponent},
   { path: 'home', component:  HomeComponent},
