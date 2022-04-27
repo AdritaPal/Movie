@@ -6,6 +6,8 @@ import { CreditsComponent } from './credits/credits.component';
 import {AppComponent} from './app.component'
 import { LoginComponent } from './login';
 import { RegisterComponent } from './register/register.component';
+import { PopularComponent } from './popular/popular.component';
+import { TopRatedComponent } from './top-rated/top-rated.component';
 import { SearchComponent } from './search/search.component';
 
 
@@ -16,8 +18,9 @@ const routes: Routes = [
   { path: 'home', component:  HomeComponent},
   { path: 'movie-details/:movie-id', component: DetailsComponent },
   { path: 'credits/:movie-id', component: CreditsComponent },
-  { path: 'search/:query', component: SearchComponent },
-
+  { path:'popular',component:PopularComponent },
+  { path:'top-rated',component:TopRatedComponent },
+  { path:'search',component:SearchComponent }
 ];
 
 @NgModule({
@@ -25,3 +28,4 @@ const routes: Routes = [
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
+
