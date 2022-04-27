@@ -21,6 +21,11 @@ export class RestApiService {
 
   url=api.apiUrl;
   key=api.apiKey;
+  page1 = 1;
+  page2 = 2;
+  page3 = 3;
+  
+  
 
   getSearchedMovies(query: string): Observable<list> {
     return this.http.get<list>(`${this.url}search/movie?api_key=${this.key}&query=`+query)
@@ -29,6 +34,7 @@ export class RestApiService {
         catchError(this.handleError)
       );
   }
+  
   getTrendingMoviesWeek(): Observable<list> {
     return this.http.get<list>(`${this.url}trending/all/week?api_key=${this.key}`)
       .pipe(
@@ -69,6 +75,49 @@ export class RestApiService {
         catchError(this.handleError)
       );
   }
+  getPopular1(): Observable<list>{
+    return this.http.get<list>(`${this.url}movie/popular?api_key=${this.key}&language=en-US&page=${this.page1}`)
+    .pipe(
+      retry(1),
+      catchError(this.handleError)
+    );
+  }
+  getPopular2(): Observable<list>{
+    return this.http.get<list>(`${this.url}movie/popular?api_key=${this.key}&language=en-US&page=${this.page2}`)
+    .pipe(
+      retry(1),
+      catchError(this.handleError)
+    );
+  }
+  getPopular3(): Observable<list>{
+    return this.http.get<list>(`${this.url}movie/popular?api_key=${this.key}&language=en-US&page=${this.page3}`)
+    .pipe(
+      retry(1),
+      catchError(this.handleError)
+    );
+  }
+  getToprated1(): Observable<list>{
+    return this.http.get<list>(`${this.url}movie/top_rated?api_key=${this.key}&language=en-US&page=${this.page1}`)
+    .pipe(
+      retry(1),
+      catchError(this.handleError)
+    );
+  }
+  getToprated2(): Observable<list>{
+    return this.http.get<list>(`${this.url}movie/top_rated?api_key=${this.key}&language=en-US&page=${this.page2}`)
+    .pipe(
+      retry(1),
+      catchError(this.handleError)
+    );
+  }
+  getToprated3(): Observable<list>{
+    return this.http.get<list>(`${this.url}movie/top_rated?api_key=${this.key}&language=en-US&page=${this.page3}`)
+    .pipe(
+      retry(1),
+      catchError(this.handleError)
+    );
+  }
+
 
 
   handleError(error: any) {
