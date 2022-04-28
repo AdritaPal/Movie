@@ -16,6 +16,8 @@ export class HeaderComponent implements OnInit {
 
   }
 
+  sort: any='';
+
   constructor(private route: Router,
     private restApi:RestApiService) { }
 
@@ -26,6 +28,16 @@ export class HeaderComponent implements OnInit {
       this.genre = data;
     });
 
+
+    
+
+  }
+
+  sortBy(sort: string) {
+    this.sort=sort;
+    this.restApi.sort=this.sort;
+    this.route.navigate(['/view'])
+    
   }
   
 

@@ -25,7 +25,25 @@ export class RestApiService {
   page1 = 1;
   page2 = 2;
   page3 = 3;
-  
+  queryParams =  '&sort_by=popularity.desc' ;
+  sortBy=''
+  'sort': string;
+  discoverMovies(sortby: string, filterby :string) :  Observable<list> {
+    if(sortby != '' && filterby!= ''){
+      this.queryParams="&sort_by="+sortby+"&"+filterby
+    }
+    if(sortby != '' && filterby== ''){
+      this.queryParams="&sort_by="+sortby
+    }
+    if(sortby == '' && filterby!= ''){
+      this.queryParams="&sort_by=popularity.desc"+"&"+filterby
+    }
+    
+    return this.http.get<list>(`${this.url}discover/movie?api_key=${this.key}`+this.queryParams, {
+      
+    });
+  }
+
   getGenres(): Observable<Genre> {
     return this.http.get<Genre>(`${this.url}genre/movie/list?api_key=${this.key}`)
       .pipe(

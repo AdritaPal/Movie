@@ -8,6 +8,7 @@ import { RegisterComponent } from './register/register.component';
 import { PopularComponent } from './popular/popular.component';
 import { TopRatedComponent } from './top-rated/top-rated.component';
 import { SearchComponent } from './search/search.component';
+import { ViewComponent } from './view/view.component';
 
 
 const routes: Routes = [
@@ -19,7 +20,8 @@ const routes: Routes = [
   { path: 'credits/:movie-id', component: CreditsComponent },
   { path:'popular',component:PopularComponent },
   { path:'top-rated',component:TopRatedComponent },
-  { path:'search/:query',component:SearchComponent }
+  { path:'search/:query',component:SearchComponent },
+  { path: 'view', component: ViewComponent},
 ];
 
 @NgModule({
