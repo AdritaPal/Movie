@@ -11,12 +11,14 @@ import { HeaderService } from '../header.service';
 export class HeaderComponent implements OnInit {
   value = '';
   genre: any=[];
+  'g_id': Array<number> = [];
+  'g_name': Array<string> = [];
   onEnter(value: string) { 
     this.value = value; 
     this.route.navigate(['/search/'+value])
 
   }
-
+  color='aliceblue'
   sort: any='';
 
   constructor(private route: Router,
@@ -42,6 +44,28 @@ export class HeaderComponent implements OnInit {
     
   }
   
+  getGenre(id: number, name: string): Array<string>{
+    if(this.g_id.indexOf(id) == -1){
+      this.g_id.push(id);
+      this.g_name.push(name);
+      console.log(this.g_id);
+    }
+    else{
+      this.g_id.splice(this.g_id.indexOf(id),1);
+      this.g_name.splice(this.g_name.indexOf(name),1);
 
+      console.log(this.g_id);
+
+    }
+    
+
+    return this.g_name;
+  }
+
+  submit(){
+    this.restApi.filter=this.g_id;
+
+    this.route.navigate(['/view']);
+  }
 
 }

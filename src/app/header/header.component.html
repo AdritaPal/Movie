@@ -71,8 +71,17 @@
                     </mat-panel-title>
                     
                   </mat-expansion-panel-header >
+                  <mat-chip-list>Selected
+                    <mat-chip [style.backgroundColor]="color" [style.color]="'black'"  *ngFor="let i of g_name" >
+                       {{i}}
+                        
+                      </mat-chip>
+                  </mat-chip-list>
+
+                  <button (click)="submit()">Submit</button>
+
                   <mat-chip-list>
-                    <mat-chip [style.backgroundColor]="'aliceblue'" [style.color]="'black'"  *ngFor="let i of genre.genres">
+                    <mat-chip [style.backgroundColor]="color" [style.color]="'black'"  *ngFor="let i of genre.genres" (click)="getGenre(i.id, i.name)">
                        {{i.name}}
                         
                       </mat-chip>
