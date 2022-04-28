@@ -39,16 +39,17 @@ export class HeaderComponent implements OnInit {
 
   sortBy(sort: string) {
     this.sort=sort;
-    this.restApi.sort=this.sort;
-    this.route.navigate(['/view'])
+    
     
   }
   
   getGenre(id: number, name: string): Array<string>{
     if(this.g_id.indexOf(id) == -1){
+      
       this.g_id.push(id);
       this.g_name.push(name);
       console.log(this.g_id);
+
     }
     else{
       this.g_id.splice(this.g_id.indexOf(id),1);
@@ -64,7 +65,7 @@ export class HeaderComponent implements OnInit {
 
   submit(){
     this.restApi.filter=this.g_id;
-
+    this.restApi.sort=this.sort;
     this.route.navigate(['/view']);
   }
 

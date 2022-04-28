@@ -25,14 +25,13 @@ export class RestApiService {
   page1 = 1;
   page2 = 2;
   page3 = 3;
-  queryParams =  '&sort_by=popularity.desc' ;
   'sort': string;
   filter: Array<number> = [];
 
   discoverMovies(queryParams: string) :  Observable<list> {
     
     
-    return this.http.get<list>(`${this.url}discover/movie?api_key=${this.key}`+this.queryParams).pipe(
+    return this.http.get<list>(`${this.url}discover/movie?api_key=${this.key}`+queryParams).pipe(
       retry(1),
       catchError(this.handleError)
     );

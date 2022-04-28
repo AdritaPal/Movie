@@ -72,13 +72,13 @@
                     
                   </mat-expansion-panel-header >
                   <mat-chip-list>Selected
-                    <mat-chip [style.backgroundColor]="color" [style.color]="'black'"  *ngFor="let i of g_name" >
+                    <mat-chip [style.backgroundColor]="'#1d5dbe'" [style.color]="'black'"  *ngFor="let i of g_name" >
                        {{i}}
                         
                       </mat-chip>
                   </mat-chip-list>
 
-                  <button (click)="submit()">Submit</button>
+                  <br><br>
 
                   <mat-chip-list>
                     <mat-chip [style.backgroundColor]="color" [style.color]="'black'"  *ngFor="let i of genre.genres" (click)="getGenre(i.id, i.name)">
@@ -126,6 +126,8 @@
               </mat-accordion>
               </mat-expansion-panel><br>
           </mat-accordion>
+          <button (click)="submit()" style="background-color: #0b3574;">Select Filter and Sort</button>
+
               <mat-divider></mat-divider>
             <mat-accordion>
                 <mat-expansion-panel hideToggle>

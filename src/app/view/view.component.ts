@@ -27,15 +27,18 @@ export class ViewComponent implements OnInit {
     this.s=this.restApi.sort;
     this.filter=this.restApi.filter;
     if(this.filter){
-      this.f = '&with_genre='
+      this.f = '&with_genres='
+      console.log(this.filter.length);
       for(let i=0; i<this.filter.length;i++){
-        if(this.filter.indexOf(i) != this.filter.length-1){
-        this.f = this.f+i+',';
+        if(i != this.filter.length-1){
+        this.f = this.f+this.filter[i]+',';
         }
         else{
-          this.f = this.f+i
+          this.f = this.f+this.filter[i];
         }
       }
+      console.log(this.f);
+
     }
     if(this.s){
       this.sortBy=this.sortBy+this.s;
@@ -44,7 +47,7 @@ export class ViewComponent implements OnInit {
       this.sortBy=this.sortBy+'&sort_by=popularity.desc';
     }
     console.log(this.s)
-    this.restApi.discoverMovies(this.sortBy+this.filter)
+    this.restApi.discoverMovies(this.sortBy+this.f)
     .subscribe((data: {}) => {
       console.warn(data);
       this.sort = data;
