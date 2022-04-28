@@ -2,7 +2,12 @@
     <mat-tab label="Today">
         
         <h1>Trending Movies Today</h1>
-
+        <div class="search-results"
+        infiniteScroll
+        [infiniteScrollDistance]="2"
+        [infiniteScrollThrottle]="50"
+        [scrollWindow]="false"
+        (scrolled)="onScroll()">
         <div class="container" *ngFor="let i of Day.results">
 
   
@@ -38,6 +43,7 @@
                     </mat-grid-tile>
                 </mat-grid-list>
             </mat-card><br>
+        </div>
         </div>
     </mat-tab>
     <mat-tab label="This Week">

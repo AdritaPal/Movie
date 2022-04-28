@@ -22,6 +22,7 @@ export class RestApiService {
 
   url=api.apiUrl;
   key=api.apiKey;
+  page=1;
   page1 = 1;
   page2 = 2;
   page3 = 3;
@@ -35,8 +36,8 @@ export class RestApiService {
   }
 
 
-  getSearchedMovies(query: string): Observable<list> {
-    return this.http.get<list>(`${this.url}search/movie?api_key=${this.key}&query=`+query)
+  getSearchedMovies(query: string, page: number): Observable<list> {
+    return this.http.get<list>(`${this.url}search/movie?api_key=${this.key}&query=`+query+`&page=${this.page}`)
       .pipe(
         retry(1),
         catchError(this.handleError)
@@ -51,8 +52,8 @@ export class RestApiService {
       );
   }
 
-  getTrendingMoviesDay(): Observable<list> {
-    return this.http.get<list>(`${this.url}trending/all/day?api_key=${this.key}`)
+  getTrendingMoviesDay(page: number): Observable<list> {
+    return this.http.get<list>(`${this.url}trending/all/day?api_key=${this.key}&page=${this.page}`)
       .pipe(
         retry(1),
         catchError(this.handleError)

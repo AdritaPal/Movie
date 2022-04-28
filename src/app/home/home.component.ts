@@ -13,8 +13,14 @@ export class HomeComponent implements OnInit {
   Week: any=[];
   Day: any=[];
   imageAPI = api.imageAPI;
+  page: number = 1;
 
 
+  onScroll() {
+    console.log("scrolled!!");
+    this.page += 1;
+  }
+  
   constructor(public restApi: RestApiService) { 
   }
 
@@ -25,7 +31,7 @@ export class HomeComponent implements OnInit {
       this.Week = data;
     });
 
-    this.restApi.getTrendingMoviesDay()
+    this.restApi.getTrendingMoviesDay(this.page)
     .subscribe((data: {}) => {
       this.apiResponse = data;
       console.warn(data);

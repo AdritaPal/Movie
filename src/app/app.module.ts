@@ -71,8 +71,8 @@ import {MatExpansionModule} from '@angular/material/expansion';
     MatGridListModule,
     MatCardModule,
     NgbModule,
-    FormsModule
-
+    FormsModule,
+    InfiniteScrollModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,5 +1,9 @@
 <h1>Search Results</h1>
-
+    <div class="search-results"
+        infiniteScroll
+        [infiniteScrollDistance]="2"
+        [infiniteScrollThrottle]="50"
+        (scrolled)="onScroll()">
         <div class="container" *ngFor="let i of searchResults.results">
 
   
@@ -36,3 +40,4 @@
                 </mat-grid-list>
             </mat-card><br>
         </div>
+    </div>

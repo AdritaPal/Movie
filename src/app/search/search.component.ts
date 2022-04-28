@@ -12,15 +12,21 @@ export class SearchComponent implements OnInit {
   query = this.router.snapshot.params['query'];
   searchResults: any = {};
   imageAPI = api.imageAPI;
+  page = 1;
 
 
+  onScroll() {
+    console.log("scrolled!!");
+    this.page += 1;
+  }
+  
   constructor(
     public router: ActivatedRoute,
     public restApi: RestApiService
     ) { }
 
   ngOnInit(): void {
-    this.restApi.getSearchedMovies(this.query)
+    this.restApi.getSearchedMovies(this.query, this.page)
     .subscribe((data: {}) => {
       this.searchResults = data;
     });
