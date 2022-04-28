@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Router} from '@angular/router'; 
 import { RestApiService } from '../rest-api.service';
+import { HeaderService } from '../header.service';
 
 @Component({
   selector: 'app-header',
@@ -19,7 +20,8 @@ export class HeaderComponent implements OnInit {
   sort: any='';
 
   constructor(private route: Router,
-    private restApi:RestApiService) { }
+    private restApi:RestApiService,
+    public head: HeaderService) { }
 
   ngOnInit(): void {
     this.restApi.getGenres()
