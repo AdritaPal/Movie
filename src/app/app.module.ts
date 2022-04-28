@@ -32,6 +32,7 @@ import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatListModule} from '@angular/material/list';
 import {MatButtonModule} from '@angular/material/button';
 import {MatExpansionModule} from '@angular/material/expansion';
+import { ViewComponent } from './view/view.component';
 
 
 
@@ -46,7 +47,8 @@ import {MatExpansionModule} from '@angular/material/expansion';
     RegisterComponent,
     SearchComponent,
     TopRatedComponent,
-    PopularComponent
+    PopularComponent,
+    ViewComponent
   ],
   imports: [
     BrowserModule,
@@ -74,7 +76,7 @@ import {MatExpansionModule} from '@angular/material/expansion';
     FormsModule,
     InfiniteScrollModule
   ],
-  providers: [],
+  providers: [HeaderComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,10 +1,6 @@
-<h1>Search Results</h1>
-    <div class="search-results"
-        infiniteScroll
-        [infiniteScrollDistance]="2"
-        [infiniteScrollThrottle]="50"
-        (scrolled)="onScroll()">
-        <div class="container" *ngFor="let i of searchResults.results">
+<h1>Results</h1>
+
+        <div class="container" *ngFor="let i of sort.results">
 
   
             <mat-card style="padding: 0; height: 280px" routerLink="/movie-details/{{i.id}}" >
@@ -36,8 +32,3 @@
                         <div class="more-info">
                             <a mat-button routerLink="/movie-details/{{i.id}}">More info</a>
                         </div>
-                    </mat-grid-tile>
-                </mat-grid-list>
-            </mat-card><br>
-        </div>
-    </div>
