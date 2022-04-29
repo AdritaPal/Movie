@@ -66,7 +66,7 @@ export class RestApiService {
 
   getTrendingMoviesDay(): Observable<list> {
     return this.http.get<list>(`${this.url}trending/all/day?api_key=${this.key}`)
-      .pipe(
+     .pipe(
         retry(1),
         catchError(this.handleError)
       );
