@@ -1,53 +1,53 @@
-<!--<div class="toolbar">
-    <a class="home-icon icon-outline" mat-button routerLink="/home">
-       <mat-icon aria-hidden="false" aria-label="home icon">movie</mat-icon>
-    </a>
-    <a class="home">Movie Database</a>
-    <div class="spacer">
-        <div class="dropdown">
-            <a class="dropbtn">Types</a>
-            <div class="dropdown-content">
-                <a href="popular">Popular Movies</a>
-                <a href="top-rated">Top Rated</a>
-                <a href="#">Link 3</a>
-            </div>
-        </div>
+  <!--<div class="toolbar">
+      <a class="home-icon icon-outline" mat-button routerLink="/home">
+        <mat-icon aria-hidden="false" aria-label="home icon">movie</mat-icon>
+      </a>
+      <a class="home">Movie Database</a>
+      <div class="spacer">
+          <div class="dropdown">
+              <a class="dropbtn">Types</a>
+              <div class="dropdown-content">
+                  <a href="popular">Popular Movies</a>
+                  <a href="top-rated">Top Rated</a>
+                  <a href="#">Link 3</a>
+              </div>
+          </div>
 
-        <div class="dropdown">
-            <a class="dropbtn">Dropdown 2</a>
-            <div class="dropdown-content">
-                <a href="#">Link 1</a>
-                <a href="#">Link 2</a>
-                <a href="#">Link 3</a>
-            </div>
-        </div>
+          <div class="dropdown">
+              <a class="dropbtn">Dropdown 2</a>
+              <div class="dropdown-content">
+                  <a href="#">Link 1</a>
+                  <a href="#">Link 2</a>
+                  <a href="#">Link 3</a>
+              </div>
+          </div>
 
-        <div class="dropdown">
-            <a class="dropbtn">Dropdown 3</a>
-            <div class="dropdown-content">
-                <a href="#">Link 1</a>
-                <a href="#">Link 2</a>
-                <a href="#">Link 3</a>
-            </div>
-        </div>
-    </div>
+          <div class="dropdown">
+              <a class="dropbtn">Dropdown 3</a>
+              <div class="dropdown-content">
+                  <a href="#">Link 1</a>
+                  <a href="#">Link 2</a>
+                  <a href="#">Link 3</a>
+              </div>
+          </div>
+      </div>
 
-    
-        <form class="example-form" style="margin-right: 40px;">
-            <mat-form-field class="example-full-width">
-            <span matPrefix> </span>
-            <input  #box (keyup.enter)="onEnter(box.value)" placeholder="Search for a movie">
-            <button matSuffix mat-button (keyup.enter)="onEnter(box.value)">
-                <mat-icon aria-hidden="false" aria-label="home icon">movie</mat-icon>
-            </button>
-            </mat-form-field>
-            <br/>
-            <!-- {{searchWord}} --
-            </form>
-    
-    <h4><a routerLink="/login" style="font-weight: bolder;">Logout</a></h4>
-</div>-->
-<mat-sidenav-container fullscreen>
+      
+          <form class="example-form" style="margin-right: 40px;">
+              <mat-form-field class="example-full-width">
+              <span matPrefix> </span>
+              <input  #box (keyup.enter)="onEnter(box.value)" placeholder="Search for a movie">
+              <button matSuffix mat-button (keyup.enter)="onEnter(box.value)">
+                  <mat-icon aria-hidden="false" aria-label="home icon">movie</mat-icon>
+              </button>
+              </mat-form-field>
+              <br/>
+              <!-- {{searchWord}} --
+              </form>
+      
+      <h4><a routerLink="/login" style="font-weight: bolder;">Logout</a></h4>
+  </div>-->
+  <mat-sidenav-container fullscreen>
     <mat-sidenav mode="side" #sidenav >
       <h3>Menu</h3>
       <mat-nav-list >
@@ -63,6 +63,10 @@
                 </mat-panel-title>
                 
               </mat-expansion-panel-header >
+
+              <h6>Critic Rating</h6>
+              <ngx-slider [(value)]="value" [(highValue)]="highValue" [options]="options" (valueChange)="valueChange(value, highValue)"></ngx-slider>
+
               <mat-accordion>
                 <mat-expansion-panel hideToggle>
                   <mat-expansion-panel-header>
@@ -71,9 +75,18 @@
                     </mat-panel-title>
                     
                   </mat-expansion-panel-header >
+                  <mat-chip-list>Selected
+                    <mat-chip [style.backgroundColor]="'#1d5dbe'" [style.color]="'black'"  *ngFor="let i of g_name" >
+                      {{i}}
+                        
+                      </mat-chip>
+                  </mat-chip-list>
+
+                  <br><br>
+
                   <mat-chip-list>
-                    <mat-chip [style.backgroundColor]="'aliceblue'" [style.color]="'black'"  *ngFor="let i of genre.genres">
-                       {{i.name}}
+                    <mat-chip [style.backgroundColor]="color" [style.color]="'black'"  *ngFor="let i of genre.genres" (click)="getGenre(i.id, i.name)">
+                      {{i.name}}
                         
                       </mat-chip>
                   </mat-chip-list>
@@ -117,8 +130,10 @@
               </mat-accordion>
               </mat-expansion-panel><br>
           </mat-accordion>
-              <mat-divider></mat-divider>
-            <mat-accordion>
+          <button (click)="submit()" style="background-color: #0b3574;">Select Filter and Sort</button>
+
+          <mat-divider></mat-divider>
+          <mat-accordion>
                 <mat-expansion-panel hideToggle>
                   <mat-expansion-panel-header>
                     <mat-panel-title  class="listItems">
@@ -145,7 +160,7 @@
       </mat-nav-list>
       
     </mat-sidenav>
-    <mat-sidenav-content>
+    <mat-sidenav-content >
       <mat-toolbar color="primary">
         <button mat-icon-button (click)="sidenav.toggle()">
           <mat-icon>menu</mat-icon>
@@ -157,8 +172,8 @@
             <mat-icon aria-hidden="false" aria-label="home icon">search</mat-icon>
         </button>
       </mat-toolbar>
- 
       <router-outlet></router-outlet>
+     
     </mat-sidenav-content>
   </mat-sidenav-container>
   

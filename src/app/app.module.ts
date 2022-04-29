@@ -33,6 +33,8 @@ import {MatListModule} from '@angular/material/list';
 import {MatButtonModule} from '@angular/material/button';
 import {MatExpansionModule} from '@angular/material/expansion';
 import { ViewComponent } from './view/view.component';
+import { NgxSliderModule } from '@angular-slider/ngx-slider';
+
 
 
 
@@ -55,6 +57,7 @@ import { ViewComponent } from './view/view.component';
     MatToolbarModule,
     MatTabsModule,
     MatButtonModule,
+    NgxSliderModule,
     InfiniteScrollModule,
     MatSidenavModule,
     MatListModule,
