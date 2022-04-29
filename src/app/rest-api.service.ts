@@ -26,6 +26,7 @@ export class RestApiService {
   page1 = 1;
   page2 = 2;
   page3 = 3;
+  'year': number;
   'sort': string;
   'low':number;
   'high': number;

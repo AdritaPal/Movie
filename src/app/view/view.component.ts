@@ -14,7 +14,8 @@ export class ViewComponent implements OnInit {
 
   sort: any = [];
   's':string;
-  sortBy='&sort_by='
+  year= this.restApi.year;
+  sortBy='&sort_by=';
   filter: Array<number> = [];
   f = ''
   low = this.restApi.low;
@@ -56,6 +57,9 @@ export class ViewComponent implements OnInit {
       this.f=this.f+'&vote_average.gte='+this.low+'&vote_average.lte='+this.high
     }
 
+    if (this.year>0){
+      this.f=this.f + '&year='+this.year
+    }
     console.log(this.s)
     this.restApi.discoverMovies(this.sortBy+this.f)
     .subscribe((data: {}) => {

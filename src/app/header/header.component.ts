@@ -45,14 +45,34 @@ export class HeaderComponent implements OnInit {
 
   
 
+  name=''; 
+
   valueChange(value: number, highValue: number): void {
     this.value = value
     this.highValue= highValue;
     console.log(this.value, this.highValue)
   }
-  sortBy(sort: string) {
+  sortBy(sort: string): string {
     this.sort=sort;
-    
+    if(sort == 'original_title.asc'){
+      this.name='Title (A - Z)'
+    }
+    if(sort == 'original_title.desc'){
+      this.name='Title (Z - A)'
+    }
+    if(sort == 'release_date.desc'){
+      this.name='Release Date Descending'
+    }
+    if(sort == 'release_date.asc'){
+      this.name='Release Date Ascending'
+    }
+    if(sort == 'vote_average.desc'){
+      this.name='Critic Rating Descending'
+    }
+    if(sort == 'vote_average.asc'){
+      this.name='Critic Rating Ascending'
+    }
+    return this.name;
     
   }
   
@@ -61,14 +81,12 @@ export class HeaderComponent implements OnInit {
       
       this.g_id.push(id);
       this.g_name.push(name);
-      console.log(this.g_id);
 
     }
     else{
       this.g_id.splice(this.g_id.indexOf(id),1);
       this.g_name.splice(this.g_name.indexOf(name),1);
 
-      console.log(this.g_id);
 
     }
     
@@ -76,8 +94,12 @@ export class HeaderComponent implements OnInit {
     return this.g_name;
   }
 
+   'year': number;
+
+  
   submit(){
     this.restApi.filter=this.g_id;
+    this.restApi.year=this.year;
     this.restApi.sort=this.sort;
     this.restApi.low=this.value;
     this.restApi.high=this.highValue;
