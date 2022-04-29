@@ -160,7 +160,7 @@
         </mat-nav-list>
         
       </mat-sidenav>
-      <mat-sidenav-content>
+      <mat-sidenav-content >
         <mat-toolbar color="primary">
           <button mat-icon-button (click)="sidenav.toggle()">
             <mat-icon>menu</mat-icon>
@@ -172,7 +172,7 @@
               <mat-icon aria-hidden="false" aria-label="home icon">search</mat-icon>
           </button>
         </mat-toolbar>
-  
+        <router-outlet></router-outlet>
        
       </mat-sidenav-content>
     </mat-sidenav-container>
