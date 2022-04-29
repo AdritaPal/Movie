@@ -4,6 +4,7 @@ import { RestApiService } from '../rest-api.service';
 import { api } from '../config';
 import { Router } from '@angular/router';
 
+
 @Component({
   selector: 'app-view',
   templateUrl: './view.component.html',
@@ -16,6 +17,10 @@ export class ViewComponent implements OnInit {
   sortBy='&sort_by='
   filter: Array<number> = [];
   f = ''
+  low = this.restApi.low;
+  high = this.restApi.high;
+
+
   imageAPI = api.imageAPI;
   constructor(private head: HeaderComponent,
     private restApi: RestApiService,
@@ -46,6 +51,11 @@ export class ViewComponent implements OnInit {
     else{
       this.sortBy=this.sortBy+'&sort_by=popularity.desc';
     }
+
+    if (this.low<=this.high){
+      this.f=this.f+'&vote_average.gte='+this.low+'&vote_average.lte='+this.high
+    }
+
     console.log(this.s)
     this.restApi.discoverMovies(this.sortBy+this.f)
     .subscribe((data: {}) => {
@@ -54,6 +64,7 @@ export class ViewComponent implements OnInit {
     });
   }
 
+  
   
   title(original_title: string, title: string, name: string, original_name: string): string{
     if(original_title){

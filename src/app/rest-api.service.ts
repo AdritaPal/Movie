@@ -26,6 +26,8 @@ export class RestApiService {
   page2 = 2;
   page3 = 3;
   'sort': string;
+  'low':number;
+  'high': number;
   filter: Array<number> = [];
 
   discoverMovies(queryParams: string) :  Observable<list> {

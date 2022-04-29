@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import {Router} from '@angular/router'; 
 import { RestApiService } from '../rest-api.service';
 import { HeaderService } from '../header.service';
+import { Options } from "@angular-slider/ngx-slider";
+
 
 @Component({
   selector: 'app-header',
@@ -9,12 +11,12 @@ import { HeaderService } from '../header.service';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
-  value = '';
+  value1 = '';
   genre: any=[];
   'g_id': Array<number> = [];
   'g_name': Array<string> = [];
   onEnter(value: string) { 
-    this.value = value; 
+    this.value1 = value; 
     this.route.navigate(['/search/'+value])
 
   }
@@ -32,11 +34,22 @@ export class HeaderComponent implements OnInit {
       this.genre = data;
     });
 
-
-    
-
   }
 
+  value: number = 0;
+  highValue: number = 10;
+  options: Options = {
+    floor: 0,
+    ceil: 10
+  };
+
+  
+
+  valueChange(value: number, highValue: number): void {
+    this.value = value
+    this.highValue= highValue;
+    console.log(this.value, this.highValue)
+  }
   sortBy(sort: string) {
     this.sort=sort;
     
@@ -66,6 +79,8 @@ export class HeaderComponent implements OnInit {
   submit(){
     this.restApi.filter=this.g_id;
     this.restApi.sort=this.sort;
+    this.restApi.low=this.value;
+    this.restApi.high=this.highValue;
     this.route.navigate(['/view']);
   }
 
