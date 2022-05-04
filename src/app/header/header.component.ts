@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {Router} from '@angular/router'; 
+import {NavigationStart, Router} from '@angular/router'; 
 import { RestApiService } from '../rest-api.service';
 import { HeaderService } from '../header.service';
 import { Options } from "@angular-slider/ngx-slider";
@@ -25,7 +25,17 @@ export class HeaderComponent implements OnInit {
 
   constructor(private route: Router,
     private restApi:RestApiService,
-    public head: HeaderService) { }
+    public head: HeaderService) { 
+      route.events.forEach((event) => {
+        if (event instanceof NavigationStart) {
+          if (event['url'] == '/login' || event['url'] == '/register' ) {
+            this.show = false;
+          } else {
+            this.show = true;
+          }
+        }
+      });
+    }
 
   ngOnInit(): void {
     this.restApi.getGenres()
@@ -43,7 +53,7 @@ export class HeaderComponent implements OnInit {
     ceil: 10
   };
 
-  
+  show=false;
 
   name=''; 
 
