@@ -1,5 +1,6 @@
 <h1>Results</h1>
-
+<div class="search-results" infiniteScroll [infiniteScrollDistance]="2" [infiniteScrollThrottle]="50"
+    [scrollWindow]="false" (scrolled)="onScroll()">
 <div class="container" *ngFor="let i of sort.results">
 
 

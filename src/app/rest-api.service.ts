@@ -23,19 +23,17 @@ export class RestApiService {
   url=api.apiUrl;
   key=api.apiKey;
   page=1;
-  page1 = 1;
-  page2 = 2;
-  page3 = 3;
+
   'year': number;
   'sort': string;
   'low':number;
   'high': number;
   filter: Array<number> = [];
 
-  discoverMovies(queryParams: string) :  Observable<list> {
+  discoverMovies(queryParams: string, page:number) :  Observable<list> {
     
     
-    return this.http.get<list>(`${this.url}discover/movie?api_key=${this.key}`+queryParams).pipe(
+    return this.http.get<list>(`${this.url}discover/movie?api_key=${this.key}`+queryParams+`&page=${page}`).pipe(
       retry(1),
       catchError(this.handleError)
     );
@@ -51,15 +49,15 @@ export class RestApiService {
 
 
   getSearchedMovies(query: string, page: number): Observable<list> {
-    return this.http.get<list>(`${this.url}search/movie?api_key=${this.key}&query=`+query+`&page=${this.page}`)
+    return this.http.get<list>(`${this.url}search/movie?api_key=${this.key}&query=`+query+`&page=${page}`)
       .pipe(
         retry(1),
         catchError(this.handleError)
       );
   }
   
-  getTrendingMoviesWeek(): Observable<list> {
-    return this.http.get<list>(`${this.url}trending/all/week?api_key=${this.key}`)
+  getTrendingMoviesWeek(page: number): Observable<list> {
+    return this.http.get<list>(`${this.url}trending/all/week?api_key=${this.key}&page=`+page)
       .pipe(
         retry(1),
         catchError(this.handleError)
@@ -98,48 +96,23 @@ export class RestApiService {
         catchError(this.handleError)
       );
   }
-  getPopular1(): Observable<list>{
-    return this.http.get<list>(`${this.url}movie/popular?api_key=${this.key}&language=en-US&page=${this.page1}`)
+  getPopular1(page:number): Observable<list>{
+    return this.http.get<list>(`${this.url}movie/popular?api_key=${this.key}&language=en-US&page=${page}`)
     .pipe(
       retry(1),
       catchError(this.handleError)
     );
   }
-  getPopular2(): Observable<list>{
-    return this.http.get<list>(`${this.url}movie/popular?api_key=${this.key}&language=en-US&page=${this.page2}`)
+  
+  
+  getToprated1(page: number): Observable<list>{
+    return this.http.get<list>(`${this.url}movie/top_rated?api_key=${this.key}&language=en-US&page=${page}`)
     .pipe(
       retry(1),
       catchError(this.handleError)
     );
   }
-  getPopular3(): Observable<list>{
-    return this.http.get<list>(`${this.url}movie/popular?api_key=${this.key}&language=en-US&page=${this.page3}`)
-    .pipe(
-      retry(1),
-      catchError(this.handleError)
-    );
-  }
-  getToprated1(): Observable<list>{
-    return this.http.get<list>(`${this.url}movie/top_rated?api_key=${this.key}&language=en-US&page=${this.page1}`)
-    .pipe(
-      retry(1),
-      catchError(this.handleError)
-    );
-  }
-  getToprated2(): Observable<list>{
-    return this.http.get<list>(`${this.url}movie/top_rated?api_key=${this.key}&language=en-US&page=${this.page2}`)
-    .pipe(
-      retry(1),
-      catchError(this.handleError)
-    );
-  }
-  getToprated3(): Observable<list>{
-    return this.http.get<list>(`${this.url}movie/top_rated?api_key=${this.key}&language=en-US&page=${this.page3}`)
-    .pipe(
-      retry(1),
-      catchError(this.handleError)
-    );
-  }
+  
 
 
 

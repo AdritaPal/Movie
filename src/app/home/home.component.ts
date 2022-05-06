@@ -13,25 +13,24 @@ export class HomeComponent implements OnInit {
   Week: any=[];
   Day: any=[];
   imageAPI = api.imageAPI;
-  page: number = 1;
+  pageDay: number = 1;
+  pageWeek: number=1
+  temp: any=[];
 
 
-  onScroll() {
-    console.log("scrolled!!");
-    this.page += 1;
-  }
+  
   
   constructor(public restApi: RestApiService) { 
   }
 
   ngOnInit(): void {
-    this.restApi.getTrendingMoviesWeek()
+    this.restApi.getTrendingMoviesWeek(this.pageWeek)
     .subscribe((data: {}) => {
       console.warn(data);
       this.Week = data;
     });
 
-    this.restApi.getTrendingMoviesDay(this.page)
+    this.restApi.getTrendingMoviesDay(this.pageDay)
     .subscribe((data: {}) => {
       this.apiResponse = data;
       console.warn(data);
@@ -53,6 +52,30 @@ export class HomeComponent implements OnInit {
       return original_name;
     }
   }
+
+  onScroll() {
+    console.log("scrolled!!");
+    this.pageDay += 1;
+    this.restApi.getTrendingMoviesDay(this.pageDay)
+    .subscribe((data: {}) => {
+      this.apiResponse = data;
+      console.warn(data);
+      this.temp = data;
+      this.Day.results = [ ...this.Day.results, ...this.temp.results]; 
+    });
+   }
+
+   onScroll2() {
+    console.log("scrolled!!");
+    this.pageWeek += 1;
+    this.restApi.getTrendingMoviesWeek(this.pageWeek)
+    .subscribe((data: {}) => {
+      this.apiResponse = data;
+      console.warn(data);
+      this.temp = data;
+      this.Week.results = [ ...this.Week.results, ...this.temp.results]; 
+    });
+   }
 }
 
   

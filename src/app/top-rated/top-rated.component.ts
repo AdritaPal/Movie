@@ -11,32 +11,21 @@ export class TopRatedComponent implements OnInit {
 
   apiResponse: any;
   Rated1: any=[];
-  Rated2: any=[];
-  Rated3: any=[];
+  page:number=1;
+  temp: any=[];
   imageAPI = api.imageAPI;
   
   
   constructor(public restApi: RestApiService) { }
 
   ngOnInit(): void {
-    this.restApi.getToprated1()
+    this.restApi.getToprated1(this.page)
     .subscribe((data: {}) =>{
       this.apiResponse = data;
       console.warn(data);
       this.Rated1 = data;
     });
-    this.restApi.getToprated2()
-    .subscribe((data: {}) =>{
-      this.apiResponse = data;
-      console.warn(data);
-      this.Rated2 = data;
-    });
-    this.restApi.getToprated3()
-    .subscribe((data: {}) =>{
-      this.apiResponse = data;
-      console.warn(data);
-      this.Rated3 = data;
-    });
+   
   }
 
   title(original_title: string, title: string, name: string, original_name: string): string{
@@ -53,5 +42,15 @@ export class TopRatedComponent implements OnInit {
       return original_name;
     }
   }
-
+  onScroll() {
+    console.log("scrolled!!");
+    this.page += 1;
+    this.restApi.getToprated1(this.page)
+    .subscribe((data: {}) => {
+      this.apiResponse = data;
+      console.warn(data);
+      this.temp = data;
+      this.Rated1.results = [ ...this.Rated1.results, ...this.temp.results]; 
+    });
+   }
 }

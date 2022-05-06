@@ -20,6 +20,8 @@ export class ViewComponent implements OnInit {
   f = ''
   low = this.restApi.low;
   high = this.restApi.high;
+  page: number=1;
+  temp: any=[];
 
 
   imageAPI = api.imageAPI;
@@ -61,7 +63,7 @@ export class ViewComponent implements OnInit {
       this.f=this.f + '&year='+this.year
     }
     console.log(this.s)
-    this.restApi.discoverMovies(this.sortBy+this.f)
+    this.restApi.discoverMovies(this.sortBy+this.f,this.page)
     .subscribe((data: {}) => {
       console.warn(data);
       this.sort = data;
@@ -85,4 +87,16 @@ export class ViewComponent implements OnInit {
     }
   }
   
+  onScroll() {
+    console.log("scrolled!!");
+    this.page += 1;
+    this.restApi.discoverMovies(this.sortBy+this.f,this.page)
+    .subscribe((data: {}) => {
+      console.warn(data);
+      this.temp = data;
+      this.sort.results = [ ...this.sort.results, ...this.temp.results]; 
+    });
+   
+      
+   }
 }

@@ -48,7 +48,12 @@
     </mat-tab>
     <mat-tab label="This Week">
         <h1>Trending Movies this Week</h1>
-
+        <div class="search-results"
+        infiniteScroll
+        [infiniteScrollDistance]="2"
+        [infiniteScrollThrottle]="50"
+        [scrollWindow]="false"
+        (scrolled)="onScroll2()">
         <div class="container" *ngFor="let i of Week.results">
             <mat-card style="padding: 0; height: 280px" routerLink="/movie-details/{{i.id}}">
                 <mat-grid-list cols="5" rowHeight="280px" class="fade-in">
@@ -81,6 +86,7 @@
                     </mat-grid-tile>
                 </mat-grid-list>
             </mat-card><br>
+        </div>
         </div>
     </mat-tab>
 </mat-tab-group>

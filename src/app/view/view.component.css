@@ -55,3 +55,7 @@ body {
     width: 100%;
     padding: 16px;
 }
+.search-results {
+    height: 28rem;
+    overflow: scroll;
+  }

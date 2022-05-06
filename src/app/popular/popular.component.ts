@@ -10,34 +10,37 @@ import { RestApiService } from '../rest-api.service';
 export class PopularComponent implements OnInit {
    
   apiResponse: any;
-  Popular1: any=[];
-  Popular2: any=[];
-  Popular3: any=[];
+  Popular: any=[];
+  page: number = 1;
+  temp: any=[];
+
   imageAPI = api.imageAPI;
 
 
   constructor(public restApi: RestApiService) { }
 
   ngOnInit(): void {
-    this.restApi.getPopular1()
+    this.restApi.getPopular1(this.page)
     .subscribe((data: {}) =>{
       this.apiResponse = data;
       console.warn(data);
-      this.Popular1 = data;
+      this.Popular = data;
     });
-    this.restApi.getPopular2()
-    .subscribe((data: {}) =>{
-      this.apiResponse = data;
-      console.warn(data);
-      this.Popular2 = data;
-    });
-    this.restApi.getPopular3()
-    .subscribe((data: {}) =>{
-      this.apiResponse = data;
-      console.warn(data);
-      this.Popular3 = data;
-    });
+    
   }
+
+
+  onScroll() {
+    console.log("scrolled!!");
+    this.page += 1;
+    this.restApi.getPopular1(this.page)
+    .subscribe((data: {}) =>{
+      this.apiResponse = data;
+      console.warn(data);
+      this.temp = data;
+      this.Popular.results = [ ...this.Popular.results, ...this.temp.results]; 
+    });
+   }
 
   title(original_title: string, title: string, name: string, original_name: string): string{
     if(original_title){

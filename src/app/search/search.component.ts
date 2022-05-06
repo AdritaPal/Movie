@@ -13,12 +13,10 @@ export class SearchComponent implements OnInit {
   searchResults: any = {};
   imageAPI = api.imageAPI;
   page = 1;
+  temp: any=[];
 
 
-  onScroll() {
-    console.log("scrolled!!");
-    this.page += 1;
-  }
+
   
   constructor(
     public router: ActivatedRoute,
@@ -46,5 +44,16 @@ export class SearchComponent implements OnInit {
       return original_name;
     }
   }
-
+  onScroll() {
+    console.log("scrolled!!");
+    this.page += 1;
+    this.restApi.getSearchedMovies(this.query, this.page)
+    .subscribe((data: {}) => {
+      console.warn(data);
+      this.temp = data;
+      this.searchResults.results = [ ...this.searchResults.results, ...this.temp.results]; 
+    });
+   
+      
+   }
 }
