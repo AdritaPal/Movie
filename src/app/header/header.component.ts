@@ -13,8 +13,11 @@ import { Options } from "@angular-slider/ngx-slider";
 export class HeaderComponent implements OnInit {
   value1 = '';
   genre: any=[];
+  lang: any=[];
   'g_id': Array<number> = [];
   'g_name': Array<string> = [];
+  selected = 'None';
+
   onEnter(value: string) { 
     this.value1 = value; 
     this.route.navigate(['/search/'+value])
@@ -44,6 +47,12 @@ export class HeaderComponent implements OnInit {
       this.genre = data;
     });
 
+    this.restApi.getLanguage()
+    .subscribe((data: {}) => {
+      console.warn(data);
+      this.lang = data;
+    });
+
   }
 
   value: number = 0;
@@ -54,7 +63,6 @@ export class HeaderComponent implements OnInit {
   };
 
   show=false;
-
   name=''; 
 
   valueChange(value: number, highValue: number): void {
@@ -98,8 +106,7 @@ export class HeaderComponent implements OnInit {
       this.g_name.splice(this.g_name.indexOf(name),1);
 
 
-    }
-    
+    }    
 
     return this.g_name;
   }
@@ -107,12 +114,14 @@ export class HeaderComponent implements OnInit {
    'year': number;
 
   
+  
   submit(){
     this.restApi.filter=this.g_id;
     this.restApi.year=this.year;
     this.restApi.sort=this.sort;
     this.restApi.low=this.value;
     this.restApi.high=this.highValue;
+    this.restApi.lang=this.selected;
     this.route.navigate(['/view']);
   }
 

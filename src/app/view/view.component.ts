@@ -18,6 +18,7 @@ export class ViewComponent implements OnInit {
   sortBy='&sort_by=';
   filter: Array<number> = [];
   f = ''
+  lang = this.restApi.lang;
   low = this.restApi.low;
   high = this.restApi.high;
   page: number=1;
@@ -60,9 +61,13 @@ export class ViewComponent implements OnInit {
     }
 
     if (this.year>0){
-      this.f=this.f + '&year='+this.year
+      this.f=this.f + '&primary_release_year='+this.year
+      console.log(this.f)
     }
-    console.log(this.s)
+    if(this.lang!='None'){
+      this.f+='&with_original_language='+this.lang
+    }
+    console.log(this.sortBy+this.f)
     this.restApi.discoverMovies(this.sortBy+this.f,this.page)
     .subscribe((data: {}) => {
       console.warn(data);

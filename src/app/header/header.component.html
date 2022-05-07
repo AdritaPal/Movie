@@ -1,130 +1,149 @@
- 
-  <mat-sidenav-container fullscreen *ngIf="show; else elseBlock">
-    <mat-sidenav mode="side"  #sidenav>
-      <h3>Menu</h3>
-      <mat-nav-list >
-        
-          <a mat-list-item class="listItems" routerLink="/home"><mat-icon>home</mat-icon>Home</a>
-          <mat-divider></mat-divider>
+<mat-sidenav-container fullscreen *ngIf="show; else elseBlock">
+  <mat-sidenav mode="side" #sidenav>
+    <h3>Menu</h3>
+    <mat-nav-list>
+
+      <a mat-list-item class="listItems" routerLink="/home">
+        <mat-icon>home</mat-icon>Home
+      </a>
+      <mat-divider></mat-divider>
+      <br>
+      <mat-accordion>
+        <mat-expansion-panel hideToggle>
+          <mat-expansion-panel-header>
+            <mat-panel-title class="listItems">
+              Filters
+            </mat-panel-title>
+
+          </mat-expansion-panel-header>
+
+          <h6 class="listItems">Year</h6>
+          <input type="number" placeholder="Enter Year" min="1874" max="2099" style="width: 100%;" name="year"
+            [(ngModel)]="year">
+
+          <h6 class="listItems">Critic Rating</h6>
+          <ngx-slider [(value)]="value" [(highValue)]="highValue" [options]="options"
+            (valueChange)="valueChange(value, highValue)"></ngx-slider>
           <br>
           <mat-accordion>
             <mat-expansion-panel hideToggle>
               <mat-expansion-panel-header>
-                <mat-panel-title  class="listItems">
-                  Filters
+                <mat-panel-title class="listItems">
+                  Genre
                 </mat-panel-title>
-                
-              </mat-expansion-panel-header >
 
-              <h6 class="listItems">Year</h6>
-              <input type="number" placeholder="Enter Year" min="1874" max="2099" style="width: 100%;" name="year" [(ngModel)]="year">
+              </mat-expansion-panel-header>
+              <mat-chip-list>Selected
+                <mat-chip [style.backgroundColor]="'#1d5dbe'" [style.color]="'black'" *ngFor="let i of g_name">
+                  {{i}}
 
-              <h6 class="listItems">Critic Rating</h6>
-              <ngx-slider [(value)]="value" [(highValue)]="highValue" [options]="options" (valueChange)="valueChange(value, highValue)"></ngx-slider>
-              <br>
-              <mat-accordion>
-                <mat-expansion-panel hideToggle>
-                  <mat-expansion-panel-header>
-                    <mat-panel-title  class="listItems">
-                      Genre
-                    </mat-panel-title>
-                    
-                  </mat-expansion-panel-header >
-                  <mat-chip-list>Selected
-                    <mat-chip [style.backgroundColor]="'#1d5dbe'" [style.color]="'black'"  *ngFor="let i of g_name" >
-                      {{i}}
-                        
-                      </mat-chip>
-                  </mat-chip-list>
+                </mat-chip>
+              </mat-chip-list>
 
-                  <br><br>
+              <br><br>
 
-                  <mat-chip-list>
-                    <mat-chip [style.backgroundColor]="color" [style.color]="'black'"  *ngFor="let i of genre.genres" (click)="getGenre(i.id, i.name)">
-                      {{i.name}}
-                        
-                      </mat-chip>
-                  </mat-chip-list>
-                </mat-expansion-panel><br>
-            </mat-accordion>
+              <mat-chip-list>
+                <mat-chip [style.backgroundColor]="color" [style.color]="'black'" *ngFor="let i of genre.genres"
+                  (click)="getGenre(i.id, i.name)">
+                  {{i.name}}
+
+                </mat-chip>
+              </mat-chip-list>
             </mat-expansion-panel><br>
-        </mat-accordion>
-            <mat-divider></mat-divider>
-            <mat-accordion>
-              <mat-expansion-panel hideToggle>
-                <mat-expansion-panel-header>
-                  <mat-panel-title  class="listItems">
-                    Sorting
-                  </mat-panel-title>
-                  
-                </mat-expansion-panel-header >
-                <mat-accordion>
-                  <h6 class="listItems">Selected</h6>
-                    <p class="listItems"> {{name}}</p>
-                  <mat-expansion-panel hideToggle>
-                    <mat-expansion-panel-header>
-                      <mat-panel-title  class="listItems">
-                        Sort Results By
-                      </mat-panel-title>
-                      
-                    </mat-expansion-panel-header >
-                    
-                    <mat-nav-list>
-                      <a mat-list-item class="listItems" (click)="sortBy('original_title.asc')">Title (A - Z)</a>
-                      <mat-divider></mat-divider>
-                      <a mat-list-item class="listItems" (click)="sortBy('original_title.desc')">Title (Z - A)</a>
-                      <mat-divider></mat-divider>
-                      <a mat-list-item class="listItems" (click)="sortBy('release_date.desc')">Release Date Descending</a>
-                      <mat-divider></mat-divider>
-                      <a mat-list-item class="listItems" (click)="sortBy('release_date.asc')">Release Date Ascending</a>
-                      <mat-divider></mat-divider>
-                      <a mat-list-item class="listItems" (click)="sortBy('vote_average.desc')">Critic Rating Descending</a>
-                      <mat-divider></mat-divider>
-                      <a mat-list-item class="listItems" (click)="sortBy('vote_average.asc')">Critic Rating Ascending</a>
-                      <mat-divider></mat-divider>
-
-                    </mat-nav-list>
-                  </mat-expansion-panel><br>
-              </mat-accordion>
-              </mat-expansion-panel><br>
           </mat-accordion>
-          <button (click)="submit()" style="background-color: #0b3574;">Select Filter and Sort</button>
+          <mat-form-field appearance="fill">
+            <mat-label class="listItems">Select Language</mat-label>
+            <mat-select [(value)]="selected">
+              <mat-option >None</mat-option>
+              
+              <mat-option *ngFor="let i of lang" value="{{i.iso_639_1}}" >{{i.english_name}}</mat-option>
+             
+            </mat-select>
+          </mat-form-field>
+          </mat-expansion-panel><br>
+        
+      </mat-accordion>
+      <mat-divider></mat-divider>
 
-          <mat-divider></mat-divider>
+
+
+      <mat-accordion>
+        <mat-expansion-panel hideToggle>
+          <mat-expansion-panel-header>
+            <mat-panel-title class="listItems">
+              Sorting
+            </mat-panel-title>
+
+          </mat-expansion-panel-header>
           <mat-accordion>
-                <mat-expansion-panel hideToggle>
-                  <mat-expansion-panel-header>
-                    <mat-panel-title  class="listItems">
-                        Types
-                    </mat-panel-title>
-                    
-                  </mat-expansion-panel-header >
-                  <mat-nav-list >
-                    <a mat-list-item class="listItems" href="popular">Popular Movies</a>
-                    <a mat-list-item class="listItems" href="top-rated">Top Rated</a>
-                </mat-nav-list>
-                  
-                </mat-expansion-panel><br>
-        </mat-accordion>
-            <mat-divider></mat-divider>
-            <input type="button" routerLink="/login" value="Logout">
-      </mat-nav-list>
-      
-    </mat-sidenav>
-    <mat-sidenav-content >
-      <mat-toolbar color="primary" >
-        <button mat-icon-button (click)="sidenav.toggle()">
-          <mat-icon>menu</mat-icon>
-        </button>
-        <a class="home" routerLink="/home" style="color: lightblue;">Movie Database</a>
-        <span class="toolbar-spacer"></span>
-        <input  #box (keyup.enter)="onEnter(box.value)" placeholder="Search for a movie">
-        <button matSuffix mat-button (click)="onEnter(box.value)" style="background-color: lightcyan; color: black;">
-            <mat-icon aria-hidden="false" aria-label="home icon">search</mat-icon>
-        </button>
-      </mat-toolbar>
-      <router-outlet></router-outlet>
-     
-    </mat-sidenav-content>
-  </mat-sidenav-container>
-  <ng-template #elseBlock> <router-outlet></router-outlet></ng-template>
+            <h6 class="listItems">Selected</h6>
+            <p class="listItems"> {{name}}</p>
+            <mat-expansion-panel hideToggle>
+              <mat-expansion-panel-header>
+                <mat-panel-title class="listItems">
+                  Sort Results By
+                </mat-panel-title>
+
+              </mat-expansion-panel-header>
+
+              <mat-nav-list>
+                <a mat-list-item class="listItems" (click)="sortBy('original_title.asc')">Title (A - Z)</a>
+                <mat-divider></mat-divider>
+                <a mat-list-item class="listItems" (click)="sortBy('original_title.desc')">Title (Z - A)</a>
+                <mat-divider></mat-divider>
+                <a mat-list-item class="listItems" (click)="sortBy('release_date.desc')">Release Date Descending</a>
+                <mat-divider></mat-divider>
+                <a mat-list-item class="listItems" (click)="sortBy('release_date.asc')">Release Date Ascending</a>
+                <mat-divider></mat-divider>
+                <a mat-list-item class="listItems" (click)="sortBy('vote_average.desc')">Critic Rating Descending</a>
+                <mat-divider></mat-divider>
+                <a mat-list-item class="listItems" (click)="sortBy('vote_average.asc')">Critic Rating Ascending</a>
+                <mat-divider></mat-divider>
+
+              </mat-nav-list>
+            </mat-expansion-panel><br>
+          </mat-accordion>
+        </mat-expansion-panel><br>
+      </mat-accordion>
+      <button (click)="submit() "  style="background-color: #0b3574;">Select Filter and Sort</button>
+
+      <mat-divider></mat-divider>
+      <mat-accordion>
+        <mat-expansion-panel hideToggle>
+          <mat-expansion-panel-header>
+            <mat-panel-title class="listItems">
+              Types
+            </mat-panel-title>
+
+          </mat-expansion-panel-header>
+          <mat-nav-list>
+            <a mat-list-item class="listItems" href="popular">Popular Movies</a>
+            <a mat-list-item class="listItems" href="top-rated">Top Rated</a>
+          </mat-nav-list>
+
+        </mat-expansion-panel><br>
+      </mat-accordion>
+      <mat-divider></mat-divider>
+      <input type="button" routerLink="/login" value="Logout">
+    </mat-nav-list>
+
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <mat-toolbar color="primary">
+      <button mat-icon-button (click)="sidenav.toggle()">
+        <mat-icon>menu</mat-icon>
+      </button>
+      <a class="home" routerLink="/home" style="color: lightblue;">Movie Database</a>
+      <span class="toolbar-spacer"></span>
+      <input #box (keyup.enter)="onEnter(box.value)" placeholder="Search for a movie">
+      <button matSuffix mat-button (click)="onEnter(box.value)" style="background-color: lightcyan; color: black;">
+        <mat-icon aria-hidden="false" aria-label="home icon">search</mat-icon>
+      </button>
+    </mat-toolbar>
+    <router-outlet></router-outlet>
+
+  </mat-sidenav-content>
+</mat-sidenav-container>
+<ng-template #elseBlock>
+  <router-outlet></router-outlet>
+</ng-template>

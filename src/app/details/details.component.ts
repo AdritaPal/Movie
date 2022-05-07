@@ -16,6 +16,8 @@ export class DetailsComponent implements OnInit {
   reviews: any= {};
   imageAPI = api.imageAPI;
   l: any = {};
+  lang:any=[];
+  language=''
 
   constructor(
     public router: ActivatedRoute,
@@ -40,6 +42,24 @@ export class DetailsComponent implements OnInit {
       console.log(this.reviews);
     })
 
+    this.restApi.getLanguage()
+    .subscribe((data: {}) => {
+      this.lang = data;
+    })
+
+    console.log(this.lang)
+  }
+
+
+  getLang(iso: string):string{
+    for(let i=0;i<this.lang.length;i++){
+      if(this.lang[i].iso_639_1 == iso){
+        this.language = this.lang[i].english_name;
+        break;
+      }
+    }
+    console.log(this.language)
+    return this.language;
   }
 
   director(job: string, name: string): string{
