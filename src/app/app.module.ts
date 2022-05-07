@@ -34,6 +34,7 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatExpansionModule} from '@angular/material/expansion';
 import { ViewComponent } from './view/view.component';
 import { NgxSliderModule } from '@angular-slider/ngx-slider';
+import {MatSelectModule} from '@angular/material/select';
 
 
 
@@ -75,6 +76,7 @@ import { NgxSliderModule } from '@angular-slider/ngx-slider';
     RouterModule,
     MatGridListModule,
     MatCardModule,
+    MatSelectModule,
     NgbModule,
     FormsModule,
     InfiniteScrollModule

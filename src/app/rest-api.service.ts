@@ -23,7 +23,7 @@ export class RestApiService {
   url=api.apiUrl;
   key=api.apiKey;
   page=1;
-
+  'lang': string;
   'year': number;
   'sort': string;
   'low':number;
@@ -41,6 +41,14 @@ export class RestApiService {
 
   getGenres(): Observable<Genre> {
     return this.http.get<Genre>(`${this.url}genre/movie/list?api_key=${this.key}`)
+      .pipe(
+        retry(1),
+        catchError(this.handleError)
+      );
+  }
+
+  getLanguage(): Observable<Genre> {
+    return this.http.get<Genre>(`${this.url}configuration/languages?api_key=${this.key}`)
       .pipe(
         retry(1),
         catchError(this.handleError)
