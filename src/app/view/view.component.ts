@@ -64,7 +64,7 @@ export class ViewComponent implements OnInit {
       this.f=this.f + '&primary_release_year='+this.year
       console.log(this.f)
     }
-    if(this.lang!='None'){
+    if(this.lang!= 'None' ){
       this.f+='&with_original_language='+this.lang
     }
     console.log(this.sortBy+this.f)
